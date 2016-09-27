@@ -22,16 +22,15 @@ class CandidatesController < ApplicationController
   
   def create
     @candidate = Candidate.new(candidate_params)
-
-    respond_to do |format|
       if @candidate.save
-        format.html { redirect_to @candidate, notice: 'Candidate was successfully created.' }
-        format.json { render :show, status: :created, location: @candidate }
+       puts "================================="
+       puts "#{@candidate.skill_set}" 
+        UserNotifierMailer.send_interview_details(@candiate)
+        redirect_to(@candidate)
       else
-        format.html { render :new }
-        format.json { render json: @candidate.errors, status: :unprocessable_entity }
+        render :new 
       end
-    end
+   
   end
 
   def update
@@ -63,6 +62,6 @@ class CandidatesController < ApplicationController
 
    
     def candidate_params
-      params.require(:candidate).permit(:name, :email, :experience, :ctc, :expected_ctc, :mobile)
+      params.require(:candidate).permit(:name, :email, :experience, :ctc, :expected_ctc, :mobile,:skill_set)
     end
 end

@@ -1,6 +1,12 @@
-<p id="notice"><%= notice %></p>
-
-<p>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Dear <%= @user.first_name %>!</h1>
+    <p>Please find the following details of candidate for required position :
+    </p>
+   <p>
   <strong>Name:</strong>
   <%= @candidate.name %>
 </p>
@@ -32,6 +38,5 @@
   <strong>Mobile:</strong>
   <%= @candidate.mobile %>
 </p>
-
-<%= link_to 'Edit', edit_candidate_path(@candidate) %> |
-<%= link_to 'Back', candidates_path %>
+  </body>
+</html>
