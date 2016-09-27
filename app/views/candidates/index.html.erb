@@ -1,0 +1,37 @@
+<p id="notice"><%= notice %></p>
+<%= link_to "signout", destroy_user_session_path, method: :delete %>
+<h1>Candidates</h1>
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Experience</th>
+      <th>Ctc</th>
+      <th>Expected ctc</th>
+      <th>Mobile</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @candidates.each do |candidate| %>
+      <tr>
+        <td><%= candidate.name %></td>
+        <td><%= candidate.email %></td>
+        <td><%= candidate.experience %> years</td>
+        <td><%= candidate.ctc %>L/A</td>
+        <td><%= candidate.expected_ctc %>L/A</td>
+        <td><%= candidate.mobile %></td>
+        <td><%= link_to 'Show', candidate %></td>
+        <td><%= link_to 'Edit', edit_candidate_path(candidate) %></td>
+        <td><%= link_to 'Destroy', candidate, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Candidate', new_candidate_path,class: "btn btn-info" %>
