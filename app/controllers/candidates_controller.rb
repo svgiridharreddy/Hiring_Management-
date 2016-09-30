@@ -4,6 +4,9 @@ class CandidatesController < ApplicationController
   
   def index
     @candidates = Candidate.all
+    puts "++++++++++++++++++++++++++++++++++"
+    puts "====================================="
+    puts "#$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$"
   end
 
   
